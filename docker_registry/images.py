@@ -214,6 +214,7 @@ def get_image_layer(image_id, headers):
 def put_image_layer(image_id):
     try:
         json_data = store.get_content(store.image_json_path(image_id))
+        logger.debug(json_data)
     except exceptions.FileNotFoundError:
         return toolkit.api_error('Image not found', 404)
     layer_path = store.image_layer_path(image_id)
